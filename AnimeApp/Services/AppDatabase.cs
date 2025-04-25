@@ -24,5 +24,11 @@ namespace AnimeApp.Services
 
         public Task<List<AnimeContent>> GetAllAnimeAsync() =>
             _database.Table<AnimeContent>().ToListAsync();
+
+        public Task<List<AnimeContent>> GetAnimeByUserIdAsync(int userId) => 
+            _database.Table<AnimeContent>().Where(a => a.UploadedByUserId == userId).ToListAsync();
+
+        public Task<int> InsertAnimeAsync(AnimeContent anime) =>
+            _database.InsertAsync(anime);
     }
 }

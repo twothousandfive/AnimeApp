@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AnimeApp.Pages.UploadAnimePage"
+             Title="Загрузить Аниме"
+             BackgroundColor="White">
+    
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <Entry x:Name="TitleEntry" Placeholder="Название"/>
+            <Editor x:Name="DescriptionEditor" Placeholder="Описание" AutoSize="TextChanges"/>
+
+            <Picker x:Name="GenrePicker" Title="Выберите жанр">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Экшен</x:String>
+                        <x:String>Приключения</x:String>
+                        <x:String>Фэнтези</x:String>
+                        <x:String>Романтика</x:String>
+                        <x:String>Комедия</x:String>
+                        <x:String>Драма</x:String>
+                        <x:String>Ужасы</x:String>
+                        <x:String>Сёнен</x:String>
+                        <x:String>Сэйнэн</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Button Text="Выбрать обложку" Clicked="OnPickCoverClicked"/>
+            <Image x:Name="CoverImage" HeightRequest="100"/>
+
+            <Button Text="Выбрать видео" Clicked="OnPickVideoClicked"/>
+            <Label x:Name="VideoLabel" Text="Видео не выбрано" FontSize="14" TextColor="Gray"/>
+
+            <Button Text="Загрузить" Clicked="OnUploadClicked"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

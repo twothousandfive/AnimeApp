@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AnimeApp.Pages.ProfilePage"
+             Title="Профиль"
+             BackgroundColor="White">
+    
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <Image x:Name="ProfilePhoto" HeightRequest="120" WidthRequest="120"
+                   HorizontalOptions="Center"/>
+
+            <Label x:Name="EmailLabel" FontAttributes="Bold" FontSize="18"/>
+            <Label x:Name="BirthDateLabel" FontSize="16"/>
+
+            <Button Text="Добавить аниме" Clicked="OnAddAnimeClicked"/>
+            <Button Text="Выйти" Clicked="OnLogoutClicked" BackgroundColor="DarkRed" TextColor="White"/>
+
+            <Label Text="Ваши загруженные аниме:" FontAttributes="Bold" FontSize="18" Margin="0,20,0,0"/>
+            <CollectionView x:Name="AnimeList" Margin="0,10,0,0">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="LightGray" CornerRadius="10" Padding="10" Margin="5">
+                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                <Image Source="{Binding CoverImagePath}" WidthRequest="80" HeightRequest="80"/>
+                                <Label Text="{Binding Title}" VerticalOptions="Center"/>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
