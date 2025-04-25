@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AnimeApp.Pages.MainPage"
+             Title="Аниме"
+             BackgroundColor="White">
+
+    <VerticalStackLayout Padding="10" Spacing="10">
+
+        <!-- Фильтр по жанру -->
+        <Picker x:Name="GenreFilterPicker" Title="Фильтр по жанру" SelectedIndexChanged="OnGenreFilterChanged">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Все жанры</x:String>
+                    <x:String>Экшен</x:String>
+                    <x:String>Приключения</x:String>
+                    <x:String>Фэнтези</x:String>
+                    <x:String>Романтика</x:String>
+                    <x:String>Комедия</x:String>
+                    <x:String>Драма</x:String>
+                    <x:String>Ужасы</x:String>
+                    <x:String>Сёнен</x:String>
+                    <x:String>Сэйнэн</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <!-- Список аниме -->
+        <CollectionView x:Name="AnimeCollectionView">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="2"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame CornerRadius="10" Padding="5" Margin="5" HasShadow="True" BorderColor="LightGray">
+                        <StackLayout>
+                            <Image Source="{Binding CoverImagePath}" Aspect="AspectFill" HeightRequest="150"/>
+                            <Label Text="{Binding Title}" FontAttributes="Bold" FontSize="14" LineBreakMode="TailTruncation"/>
+                        </StackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BindingContext.AnimeTappedCommand, Source={x:Reference AnimeCollectionView}}"
+                                                  CommandParameter="{Binding .}" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>

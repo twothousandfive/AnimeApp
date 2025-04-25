@@ -3,7 +3,7 @@
     x:Class="AnimeApp.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:AnimeApp"
+    xmlns:local="clr-namespace:AnimeApp.Pages"
     Shell.FlyoutBehavior="Flyout"
     Title="AnimeApp">
 

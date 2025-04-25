@@ -11,7 +11,7 @@
 
             if (Preferences.ContainsKey("user_email"))
             {
-                MainPage = new NavigationPage(new Pages.ProfilePage()); // MainPage()
+                MainPage = new NavigationPage(new Pages.MainPage());
             }
             else
             {
