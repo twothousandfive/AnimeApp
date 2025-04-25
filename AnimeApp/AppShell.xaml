@@ -3,13 +3,29 @@
     x:Class="AnimeApp.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:AnimeApp.Pages"
-    Shell.FlyoutBehavior="Flyout"
-    Title="AnimeApp">
+    xmlns:local="clr-namespace:AnimeApp"
+    xmlns:pages="clr-namespace:AnimeApp.Pages"
+    Title="AnimeApp"
+    Shell.TabBarBackgroundColor="#2C3E50"
+    Shell.TabBarForegroundColor="#FFFFFF"
+    Shell.TabBarTitleColor="#FFFFFF"
+    Shell.TabBarUnselectedColor="#7F8C8D">
 
+    <TabBar>
+        <ShellContent
+            Title="Home"
+            Icon="home.png"
+            ContentTemplate="{DataTemplate pages:MainPage}"
+            Route="MainPage" />
+
+        <ShellContent
+            Title="Profile"
+            Icon="profile.png"
+            ContentTemplate="{DataTemplate pages:ProfilePage}"
+            Route="ProfilePage" />
+    </TabBar>
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
-
+        Title="Login"
+        ContentTemplate="{DataTemplate pages:LoginPage}"
+        Route="LoginPage" />
 </Shell>

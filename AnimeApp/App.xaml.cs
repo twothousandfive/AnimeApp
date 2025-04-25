@@ -9,14 +9,16 @@
             var dbPath = Path.Combine(FileSystem.AppDataDirectory, "animeApp.db3");
             Database = new Services.AppDatabase(dbPath);
 
-            if (Preferences.ContainsKey("user_email"))
-            {
-                MainPage = new NavigationPage(new Pages.MainPage());
-            }
-            else
-            {
-                MainPage = new NavigationPage(new Pages.LoginPage());
-            }
+            MainPage = new AppShell();
+
+            //if (Preferences.ContainsKey("user_email"))
+            //{
+            //    MainPage = new NavigationPage(new Pages.MainPage());
+            //}
+            //else
+            //{
+            //    MainPage = new NavigationPage(new Pages.LoginPage());
+            //}
         }
 
         //protected override Window CreateWindow(IActivationState? activationState)

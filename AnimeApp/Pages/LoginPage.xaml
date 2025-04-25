@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AnimeApp.Pages.LoginPage"
              Title="Вход"
-             BackgroundColor="White">
+             BackgroundColor="White"
+             Shell.TabBarIsVisible="False">
     
     <VerticalStackLayout Padding="20" Spacing="15">
         <Entry x:Name="EmailEntry" Placeholder="Email" Keyboard="Email"/>
