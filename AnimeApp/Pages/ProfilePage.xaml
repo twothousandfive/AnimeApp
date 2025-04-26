@@ -17,11 +17,27 @@
             <Button Text="Добавить аниме" Clicked="OnAddAnimeClicked"/>
             <Button Text="Выйти" Clicked="OnLogoutClicked" BackgroundColor="DarkRed" TextColor="White"/>
 
+            <!-- Ваши загруженные аниме -->
             <Label Text="Ваши загруженные аниме:" FontAttributes="Bold" FontSize="18" Margin="0,20,0,0"/>
             <CollectionView x:Name="AnimeList" Margin="0,10,0,0">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame BorderColor="LightGray" CornerRadius="10" Padding="10" Margin="5">
+                        <Frame BorderColor="LightGray" CornerRadius="10" Padding="10" Margin="5" >
+                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                <Image Source="{Binding CoverImagePath}" WidthRequest="80" HeightRequest="80"/>
+                                <Label Text="{Binding Title}" VerticalOptions="Center"/>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Избранные аниме -->
+            <Label Text="Избранные аниме:" FontAttributes="Bold" FontSize="18" Margin="0,20,0,0"/>
+            <CollectionView x:Name="FavoriteAnimeList" Margin="0,10,0,20" >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="Gold" CornerRadius="10" Padding="10" Margin="5">
                             <StackLayout Orientation="Horizontal" Spacing="10">
                                 <Image Source="{Binding CoverImagePath}" WidthRequest="80" HeightRequest="80"/>
                                 <Label Text="{Binding Title}" VerticalOptions="Center"/>

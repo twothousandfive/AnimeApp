@@ -1,5 +1,6 @@
 using AnimeApp.Models;
 using AnimeApp.Services;
+using System.Collections.ObjectModel;
 
 namespace AnimeApp.Pages;
 
@@ -39,6 +40,10 @@ public partial class ProfilePage : ContentPage
 
         var myAnime = await App.Database.GetAnimeByUserIdAsync(_currentUser.Id);
         AnimeList.ItemsSource = myAnime;
+
+        // Загружаем избранные аниме
+        var favoriteAnime = myAnime.Where(a => a.IsFavorite).ToList();
+        FavoriteAnimeList.ItemsSource = favoriteAnime;
     }
 
     private async void OnAddAnimeClicked(object sender, EventArgs e)

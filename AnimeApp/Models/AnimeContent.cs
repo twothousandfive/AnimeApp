@@ -13,5 +13,6 @@ namespace AnimeApp.Models
         public string CoverImagePath { get; set; }
         public string VideoPath { get; set; }
         public int UploadedByUserId { get; set; }
+        public bool IsFavorite { get; set; }
     }
 }

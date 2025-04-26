@@ -6,6 +6,7 @@
              BackgroundColor="White">
 
     <VerticalStackLayout Padding="10" Spacing="10">
+        <SearchBar Placeholder="Поиск аниме..." TextChanged="OnSearchTextChanged"/>
 
         <!-- Фильтр по жанру -->
         <Picker x:Name="GenreFilterPicker" Title="Фильтр по жанру" SelectedIndexChanged="OnGenreFilterChanged">
@@ -26,17 +27,34 @@
         </Picker>
 
         <!-- Список аниме -->
-        <CollectionView x:Name="AnimeCollectionView">
+        <CollectionView x:Name="AnimeCollectionView" SelectionMode="None">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical" Span="2"/>
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame CornerRadius="10" Padding="5" Margin="5" HasShadow="True" BorderColor="LightGray">
-                        <StackLayout>
-                            <Image Source="{Binding CoverImagePath}" Aspect="AspectFill" HeightRequest="150"/>
-                            <Label Text="{Binding Title}" FontAttributes="Bold" FontSize="14" LineBreakMode="TailTruncation"/>
-                        </StackLayout>
+                    <Frame CornerRadius="10" Padding="0" Margin="5" HasShadow="True" BorderColor="LightGray">
+                        <Grid>
+                            <!-- Картинка и сердечко -->
+                            <Grid>
+                                <Image Source="{Binding CoverImagePath}" Aspect="AspectFill" HeightRequest="275" />
+                                <Image Source="{Binding IsFavorite, Converter={StaticResource FavoriteToImageConverter}}"
+                                   HeightRequest="30"
+                                   WidthRequest="30"
+                                   HorizontalOptions="End"
+                                   VerticalOptions="Start"
+                                   Margin="5">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnFavoriteTapped" CommandParameter="{Binding .}" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </Grid>
+
+                            <!-- Название под картинкой -->
+                            <StackLayout Padding="5" VerticalOptions="End">
+                                <Label Text="{Binding Title}" FontAttributes="Bold" FontSize="14" LineBreakMode="TailTruncation"/>
+                            </StackLayout>
+                        </Grid>
 
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnAnimeTapped" CommandParameter="{Binding .}" />

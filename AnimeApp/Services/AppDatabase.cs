@@ -30,5 +30,13 @@ namespace AnimeApp.Services
 
         public Task<int> InsertAnimeAsync(AnimeContent anime) =>
             _database.InsertAsync(anime);
+
+        public async Task<int> SaveAnimeAsync(AnimeContent anime)
+        {
+            if (anime.Id != 0)
+                return await _database.UpdateAsync(anime);
+            else
+                return await _database.InsertAsync(anime);
+        }
     }
 }
