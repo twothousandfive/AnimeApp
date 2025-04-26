@@ -37,9 +37,9 @@
                             <Image Source="{Binding CoverImagePath}" Aspect="AspectFill" HeightRequest="150"/>
                             <Label Text="{Binding Title}" FontAttributes="Bold" FontSize="14" LineBreakMode="TailTruncation"/>
                         </StackLayout>
+
                         <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding BindingContext.AnimeTappedCommand, Source={x:Reference AnimeCollectionView}}"
-                                                  CommandParameter="{Binding .}" />
+                            <TapGestureRecognizer Tapped="OnAnimeTapped" CommandParameter="{Binding .}" />
                         </Frame.GestureRecognizers>
                     </Frame>
                 </DataTemplate>

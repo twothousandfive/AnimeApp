@@ -10,7 +10,10 @@ public partial class MainPage : ContentPage
     public MainPage()
 	{
 		InitializeComponent();
-	}
+
+        // добавляем обработчик нажатий
+        AnimeCollectionView.SelectionChanged += OnAnimeSelected;
+    }
 
     protected override async void OnAppearing()
     {
@@ -19,6 +22,23 @@ public partial class MainPage : ContentPage
         var allAnime = await App.Database.GetAllAnimeAsync();
         _allAnime = new ObservableCollection<AnimeContent>(allAnime);
         AnimeCollectionView.ItemsSource = _allAnime;
+    }
+
+    private async void OnAnimeSelected(object sender, SelectionChangedEventArgs e)
+    {
+        if (e.CurrentSelection.FirstOrDefault() is AnimeContent selectedAnime)
+        {
+            await Navigation.PushAsync(new AnimeDetailsPage(selectedAnime));
+            ((CollectionView)sender).SelectedItem = null; // убираем выделение
+        }
+    }
+
+    private async void OnAnimeTapped(object sender, TappedEventArgs e)
+    {
+        if (e.Parameter is AnimeContent tappedAnime)
+        {
+            await Navigation.PushAsync(new AnimeDetailsPage(tappedAnime));
+        }
     }
 
     private void OnGenreFilterChanged(object sender, EventArgs e)
