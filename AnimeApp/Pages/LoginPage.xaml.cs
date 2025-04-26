@@ -24,7 +24,8 @@ public partial class LoginPage : ContentPage
         }
 
         Preferences.Set("user_email", email); // сохранить сессию
-        await Navigation.PushAsync(new MainPage());
+        //await Navigation.PushAsync(new MainPage());
+        await Shell.Current.GoToAsync("//MainPage");
     }
 
     private async void OnRegisterTapped(object sender, EventArgs e)
